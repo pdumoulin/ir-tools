@@ -4,8 +4,6 @@ import time
 
 from devices import DeviceList
 
-# TODO - need way to make a device quicker...
-
 def main():
     learn_time = 10
     remote = sys.argv[1]
