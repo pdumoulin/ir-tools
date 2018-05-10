@@ -25,7 +25,9 @@ class DeviceList(object):
             self.devices[device_name] = device
 
     def get(self, name):
-        return self.devices[name] if name in self.devices else None
+        device = self.devices[name] if name in self.devices else None
+        device.auth()
+        return device
 
     def create_device(self, device_config):
         host = (device_config['ip'], int(device_config['port']))

@@ -1,11 +1,36 @@
 
+import os
+
 class Librarian(object):
 
+    directory = None
+
     def __init__(self, library_dir):
-        pass
+        if os.path.isdir(library_dir):
+            self.directory = library_dir
+        else:
+            raise Exception('%s is not a directory!' % library_dir)
 
-    def get(self, remote, button):
-        pass
+    def read(self, remote, button):
+        remote_dir = os.path.join(self.directory, remote)
+        if not os.path.isdir(remote_dir):
+            raise Exception('dir "%s" does not exist!' % remote_dir)
 
-    def set(self, remote, button):
-        pass
+        button_file = os.path.join(remote_dir, button)
+        if not os.path.isfile(button_file):
+            raise Exception('file "%s" does not exist!' % button_file)
+
+        with open(button_file, 'r') as f:
+            code = f.read()
+        return code.decode('hex')
+
+    def write(self, remote, button, code):
+        remote_dir = os.path.join(self.directory, remote)
+        if not os.path.isdir(remote_dir):
+            os.makedirs(remote_dir)
+        button_file = os.path.join(remote_dir, button)
+
+        code = code.encode('hex')
+        with open(button_file, 'w') as f:
+            f.write(code)
+        return code
