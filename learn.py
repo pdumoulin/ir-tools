@@ -8,7 +8,7 @@ from library import Librarian
 def main():
     librarian = Librarian('./library')
 
-    learn_time = 10
+    learn_time = 3
     remote = sys.argv[1]
     button = sys.argv[2]
     device_name = sys.argv[3] if len(sys.argv) > 3 else 'default'
