@@ -1,11 +1,14 @@
 
 import sys
+import os
 
 from devices import DeviceList
 from library import Librarian
 
 def main():
-    librarian = Librarian('./library')
+    script_dir = os.path.dirname(os.path.realpath(__file__))
+    library_dir = os.path.join(script_dir, 'library')
+    librarian = Librarian(library_dir)
 
     remote = sys.argv[1]
     button = sys.argv[2]
