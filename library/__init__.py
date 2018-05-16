@@ -1,5 +1,6 @@
 
 import os
+import base64
 
 class Librarian(object):
 
@@ -22,7 +23,8 @@ class Librarian(object):
 
         with open(button_file, 'r') as f:
             code = f.read()
-        return code.decode('hex')
+
+        return base64.b64decode(code)
 
     def write(self, remote, button, code):
         remote_dir = os.path.join(self.directory, remote)
@@ -30,7 +32,7 @@ class Librarian(object):
             os.makedirs(remote_dir)
         button_file = os.path.join(remote_dir, button)
 
-        code = code.encode('hex')
+        code = base64.b64encode(code)
         with open(button_file, 'w') as f:
             f.write(code)
         return code
