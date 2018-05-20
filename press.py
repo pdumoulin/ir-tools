@@ -2,12 +2,12 @@
 import sys
 import os
 
-from devices import DeviceList
-from library import Librarian
+from ir_devices import DeviceList
+from ir_library import Librarian
 
 def main():
     script_dir = os.path.dirname(os.path.realpath(__file__))
-    library_dir = os.path.join(script_dir, 'library')
+    library_dir = os.path.join(script_dir, 'ir_library')
     librarian = Librarian(library_dir)
 
     remote = sys.argv[1]

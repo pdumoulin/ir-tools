@@ -3,12 +3,12 @@ import sys
 import os
 import time
 
-from devices import DeviceList
-from library import Librarian
+from ir_devices import DeviceList
+from ir_library import Librarian
 
 def main():
     script_dir = os.path.dirname(os.path.realpath(__file__))
-    library_dir = os.path.join(script_dir, 'library')
+    library_dir = os.path.join(script_dir, 'ir_library')
     librarian = Librarian(library_dir)
 
     learn_time = 3
