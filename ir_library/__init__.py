@@ -31,8 +31,7 @@ class Librarian(object):
         if not os.path.isdir(remote_dir):
             os.makedirs(remote_dir)
         button_file = os.path.join(remote_dir, button)
-
         code = base64.b64encode(code)
-        with open(button_file, 'w') as f:
+        with open(button_file, 'wb') as f:
             f.write(code)
         return code

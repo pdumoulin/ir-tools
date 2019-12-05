@@ -31,6 +31,6 @@ class DeviceList(object):
 
     def create_device(self, device_config):
         host = (device_config['ip'], int(device_config['port']))
-        mac = device_config['mac_hex'].decode('hex')
+        mac = device_config['mac_hex']
         devtype = int(device_config['devtype'])
         return broadlink.rm(host, mac, devtype)
